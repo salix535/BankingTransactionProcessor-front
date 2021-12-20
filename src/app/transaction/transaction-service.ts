@@ -1,0 +1,30 @@
+import {Injectable} from "@angular/core";
+import {HttpClient} from "@angular/common/http";
+import {TransactionRequest} from "./model/transaction-request";
+import {Observable} from "rxjs";
+import {OAuthService} from "angular-oauth2-oidc";
+import {TransactionResponse} from "./model/transaction-response";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TransactionService {
+  constructor(private http: HttpClient, private oAuthService: OAuthService) {
+  }
+
+  public createTransaction(transactionRequest: TransactionRequest): Observable<void> {
+    return this.http.post<void>('http://localhost:8080/transactions', transactionRequest, {
+      headers: {
+        'Authorization': `Bearer ${this.oAuthService.getAccessToken()}`
+      }
+    });
+  }
+
+  public loadProcessedTransactions(): Observable<TransactionResponse[]> {
+    return this.http.get<TransactionResponse[]>('http://localhost:8080/transactions', {
+      headers: {
+        'Authorization': `Bearer ${this.oAuthService.getAccessToken()}`
+      }
+    });
+  }
+}

@@ -1,0 +1,54 @@
+<h2 class="text-center">Create new transaction</h2>
+<div class="row-cols-1">
+  <form class="col-lg-6 offset-lg-3" [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+    <div class="row justify-content-center">
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="number" class="form-control" id="amount" placeholder="Enter amount" formControlName="amount">
+      </div>
+      <div class="form-group">
+        <label for="senderAccountNumber">Sender account number</label>
+        <input type="text" class="form-control" id="senderAccountNumber" placeholder="Enter sender account number" formControlName="sourceAccountNumber">
+      </div>
+      <div class="form-group">
+        <label for="recipientAccountNumber">Recipient account number</label>
+        <input type="text" class="form-control" id="recipientAccountNumber" placeholder="Enter recipient account number" formControlName="destinationAccountNumber">
+      </div>
+      <span class="input-group-btn">
+       <button type="submit" class="btn btn-primary">Submit</button>
+     </span>
+    </div>
+  </form>
+</div>
+
+
+<h2 class="text-center">Processed Transactions</h2>
+<div class="row justify-content-center">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Id</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Sender Account Number</th>
+      <th scope="col">Recipient Account Number</th>
+      <th scope="col">Creation Time</th>
+      <th scope="col">Processing Time</th>
+      <th scope="col">Created By</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let transaction of processedTransactions; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ transaction.id }}</td>
+      <td>{{ transaction.amount }}</td>
+      <td>{{ transaction.sourceAccountNumber }}</td>
+      <td>{{ transaction.destinationAccountNumber }}</td>
+      <td>{{ transaction.creationTime }}</td>
+      <td>{{ transaction.processingTime }}</td>
+      <td>{{ transaction.createdBy }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-primary" (click)="loadAllProcessedTransactions()">Load all processed transactions</button>
+</div>
