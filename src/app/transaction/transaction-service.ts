@@ -13,7 +13,7 @@ export class TransactionService {
   }
 
   public createTransaction(transactionRequest: TransactionRequest): Observable<void> {
-    return this.http.post<void>('http://localhost:8080/transactions', transactionRequest, {
+    return this.http.post<void>('https://xihw1mamne.execute-api.eu-central-1.amazonaws.com/transactions', transactionRequest, {
       headers: {
         'Authorization': `Bearer ${this.oAuthService.getAccessToken()}`
       }
@@ -21,7 +21,7 @@ export class TransactionService {
   }
 
   public loadProcessedTransactions(): Observable<TransactionResponse[]> {
-    return this.http.get<TransactionResponse[]>('http://localhost:8080/transactions', {
+    return this.http.get<TransactionResponse[]>('https://xihw1mamne.execute-api.eu-central-1.amazonaws.com/transactions', {
       headers: {
         'Authorization': `Bearer ${this.oAuthService.getAccessToken()}`
       }

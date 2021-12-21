@@ -1,5 +1,5 @@
 export interface TransactionResponse {
-  id: string,
+  transactionId: string,
   amount: number,
   sourceAccountNumber: string,
   destinationAccountNumber: string,

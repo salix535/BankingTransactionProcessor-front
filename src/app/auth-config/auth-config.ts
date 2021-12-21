@@ -1,11 +1,11 @@
 import { AuthConfig } from 'angular-oauth2-oidc';
 
 export const authCodeFlowConfig: AuthConfig = {
-  issuer: 'https://cognito-idp.eu-central-1.amazonaws.com/eu-central-1_HyEsakxFN',
+  issuer: 'https://cognito-idp.eu-central-1.amazonaws.com/eu-central-1_srbZ5NeNA',
 
   redirectUri: window.location.origin,
 
-  clientId: '4qu0ek50mf6d43vtuigboth0pk',
+  clientId: '4684givf35e3lbbn4hsui7p1qp',
 
   responseType: 'token',
 
